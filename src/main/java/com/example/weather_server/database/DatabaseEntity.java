@@ -37,7 +37,7 @@ public class DatabaseEntity {
         this.cityName = weatherJson.getName();
     }
 
-    public DatabaseEntity() {
+    public DatabaseEntity(Long id, String base, double visibility, long dt, Long timezone, String name, Long cod, Long weatherJsonId) {
 
     }
 

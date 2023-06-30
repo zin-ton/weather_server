@@ -9,8 +9,10 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 @Controller
 @SpringBootApplication
@@ -18,17 +20,16 @@ public class WeatherServerApplication {
 	Log log = LogFactory.getLog(WeatherServerApplication.class);
 	@Autowired
 	private WindRepository windRepository;
-	@PostMapping("/wind")
-	public void wind(@RequestBody String weather) {
-		WeatherJson weatherResponse = null;
-		try {
-			ObjectMapper objectMapper = new ObjectMapper();
-			weatherResponse = objectMapper.readValue(weather, WeatherJson.class);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		log.info("Weather: " + weatherResponse);
-		//windRepository.findAll().forEach(log::info);
+	@PutMapping("/update")
+	public ResponseEntity<WeatherJson> create(@RequestBody WeatherJson weatherJson) {
+		log.info("POST /wind");
+		log.info(weatherJson);
+		WindEntity windEntity = new WindEntity();
+		windEntity.setSpeed(weatherJson.getWind().getSpeed());
+		windEntity.setDeg(weatherJson.getWind().getDeg());
+		windRepository.save(windEntity);
+
+		return ResponseEntity.ok(weatherJson);
 	}
 
 	public static void main(String[] args) {

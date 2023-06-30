@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.io.InputStream;
+import java.net.HttpURLConnection;
 import java.net.URL;
 
 @Controller
@@ -33,12 +35,20 @@ public class RequestsController {
 
     @GetMapping("/updateWeather/{id}/{lon}/{lat}")
     @ResponseBody
-    public Double updateWeaher(@PathVariable("id") Long id, @PathVariable("lon") Double lon, @PathVariable("lat") Double lat) {
-        String url = "https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + "&appid=" + "20c29eec2e1c9d4891b32fac6a783bde" + "&units=metric";
+    public WeatherJson updateWeaher(@PathVariable("id") Long id, @PathVariable("lon") Double lon, @PathVariable("lat") Double lat) {
+        String url = "https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&appid=" + "20c29eec2e1c9d4891b32fac6a783bde" + "&units=metric";
         WeatherJson weatherJson = new WeatherJson();
+        String answer = null;
         try {
             ObjectMapper objectMapper = new ObjectMapper();
-            String answer = new URL(url).openConnection().toString();
+            HttpURLConnection HttpURLConnection = (java.net.HttpURLConnection) new URL(url).openConnection();
+            HttpURLConnection.setRequestMethod("GET");
+            InputStream is = HttpURLConnection.getInputStream();
+            HttpURLConnection.connect();
+            byte[] buffer = new byte[is.available()];
+            is.read(buffer);
+            answer = new String(buffer);
+            HttpURLConnection.disconnect();
             weatherJson = objectMapper.readValue(answer, WeatherJson.class);
         } catch (Exception e) {
             e.printStackTrace();
@@ -53,7 +63,7 @@ public class RequestsController {
             databaseEntity.setId(weatherJson.getId());
             databaseRepository.save(databaseEntity);
         }
-        return weatherJson.getWind().getSpeed();
+        return weatherJson;
     }
 }
 

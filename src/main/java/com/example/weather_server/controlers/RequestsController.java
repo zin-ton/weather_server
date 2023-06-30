@@ -19,23 +19,12 @@ import java.net.URL;
 @Controller
 public class RequestsController {
     @Autowired
-    private CloudsRepository cloudsRepository;
-    @Autowired
-    private CoordRepository coordRepository;
-    @Autowired
     private DatabaseRepository databaseRepository;
-    @Autowired
-    private MainRepository mainRepository;
-    @Autowired
-    private SysRepository sysRepository;
-    @Autowired
-    private WeatherRepository weatherRepository;
-    @Autowired
-    private WindRepository windRepository;
 
     @GetMapping("/updateWeather/{id}/{lon}/{lat}")
     @ResponseBody
     public WeatherJson updateWeaher(@PathVariable("id") Long id, @PathVariable("lon") Double lon, @PathVariable("lat") Double lat) {
+        //TODO: add API key
         String url = "https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&appid=" + "API" + "&units=metric";
         WeatherJson weatherJson = new WeatherJson();
         String answer = null;

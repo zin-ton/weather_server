@@ -1,7 +1,5 @@
 package com.example.weather_server.json_weather;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 public class Clouds {
     private Double all;
 

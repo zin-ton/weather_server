@@ -1,15 +1,13 @@
 package com.example.weather_server.controlers;
 
-import com.example.weather_server.json_weather.Sys;
+import com.example.weather_server.database.DatabaseEntity;
 import com.example.weather_server.json_weather.WeatherJson;
-import com.example.weather_server.json_weather.Wind;
-import com.example.weather_server.repos.*;
+import com.example.weather_server.repos.DatabaseRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.io.InputStream;
@@ -43,7 +41,7 @@ public class RequestsController {
             e.printStackTrace();
         }
         if (databaseRepository.findByUserId(id).size() == 0) {
-            databaseRepository.save(new com.example.weather_server.database.DatabaseEntity(id, weatherJson.getBase(), weatherJson.getVisibility(), weatherJson.getDt(), weatherJson.getTimezone(), weatherJson.getName(), weatherJson.getCod(), weatherJson.getId()));
+            databaseRepository.save(new DatabaseEntity(weatherJson, id));
         } else {
             com.example.weather_server.database.DatabaseEntity databaseEntity = databaseRepository.findByUserId(id).get(0);
             databaseEntity.setVisibility((long) weatherJson.getVisibility());

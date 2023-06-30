@@ -14,26 +14,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-@Controller
+
 @SpringBootApplication
 public class WeatherServerApplication {
-	Log log = LogFactory.getLog(WeatherServerApplication.class);
-	@Autowired
-	private WindRepository windRepository;
-	@PutMapping("/update")
-	public ResponseEntity<WeatherJson> create(@RequestBody WeatherJson weatherJson) {
-		log.info("POST /wind");
-		log.info(weatherJson);
-		WindEntity windEntity = new WindEntity();
-		windEntity.setSpeed(weatherJson.getWind().getSpeed());
-		windEntity.setDeg(weatherJson.getWind().getDeg());
-		windRepository.save(windEntity);
 
-		return ResponseEntity.ok(weatherJson);
-	}
-
-	public static void main(String[] args) {
-		SpringApplication.run(WeatherServerApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(WeatherServerApplication.class, args);
+    }
 
 }

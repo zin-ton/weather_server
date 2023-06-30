@@ -32,9 +32,9 @@ public class DatabaseEntity {
     public DatabaseEntity(WeatherJson weatherJson, Long user_id) {
         this.userId = user_id;
         this.visibility = (long) weatherJson.getVisibility();
-        this.dt = weatherJson.getDateTime();
+        this.dt = weatherJson.getDt();
         this.timezone = weatherJson.getTimezone();
-        this.cityName = weatherJson.getCityName();
+        this.cityName = weatherJson.getName();
     }
 
     public DatabaseEntity() {

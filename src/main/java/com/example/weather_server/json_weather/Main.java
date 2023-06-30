@@ -1,58 +1,46 @@
 package com.example.weather_server.json_weather;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Main {
-    @JsonProperty("temp")
-    private double temperature;
-
-    @JsonProperty("feels_like")
-    private double feelsLike;
-
-    @JsonProperty("temp_min")
-    private double minTemperature;
-
-    @JsonProperty("temp_max")
-    private double maxTemperature;
-
-    @JsonProperty("pressure")
+    private double temp;
+    private double feels_like;
+    private double temp_min;
+    private double temp_max;
     private double pressure;
-
-    @JsonProperty("humidity")
     private double humidity;
 
-    public double getTemperature() {
-        return temperature;
+    public double getTemp() {
+        return temp;
     }
 
-    public void setTemperature(double temperature) {
-        this.temperature = temperature;
+    public void setTemp(double temp) {
+        this.temp = temp;
     }
 
-    public double getFeelsLike() {
-        return feelsLike;
+    public double getFeels_like() {
+        return feels_like;
     }
 
-    public void setFeelsLike(double feelsLike) {
-        this.feelsLike = feelsLike;
+    public void setFeels_like(double feels_like) {
+        this.feels_like = feels_like;
     }
 
-    public double getMinTemperature() {
-        return minTemperature;
+    public double getTemp_min() {
+        return temp_min;
     }
 
-    public void setMinTemperature(double minTemperature) {
-        this.minTemperature = minTemperature;
+    public void setTemp_min(double temp_min) {
+        this.temp_min = temp_min;
     }
 
-    public double getMaxTemperature() {
-        return maxTemperature;
+    public double getTemp_max() {
+        return temp_max;
     }
 
-    public void setMaxTemperature(double maxTemperature) {
-        this.maxTemperature = maxTemperature;
+    public void setTemp_max(double temp_max) {
+        this.temp_max = temp_max;
     }
 
     public double getPressure() {

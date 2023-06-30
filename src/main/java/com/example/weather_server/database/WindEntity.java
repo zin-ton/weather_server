@@ -19,7 +19,7 @@ public class WindEntity {
 
     public WindEntity(WeatherJson weatherJson) {
         this.speed = weatherJson.getWind().getSpeed();
-        this.deg = weatherJson.getWind().getDirection();
+        this.deg = weatherJson.getWind().getDeg();
     }
 
     public WindEntity() {

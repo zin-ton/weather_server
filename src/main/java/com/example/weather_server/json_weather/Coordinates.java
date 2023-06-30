@@ -5,10 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Coordinates {
-    @JsonProperty("lon")
     private double longitude;
-
-    @JsonProperty("lat")
     private double latitude;
 
     public double getLongitude() {

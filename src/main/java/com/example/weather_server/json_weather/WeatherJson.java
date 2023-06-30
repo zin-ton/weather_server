@@ -1,36 +1,46 @@
 package com.example.weather_server.json_weather;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class WeatherJson {
-    @JsonProperty("coord")
-    private Coordinates coordinates;
-
-    @JsonProperty("weather")
+    private Coordinates coord;
     private Weather[] weather;
-
-    @JsonProperty("main")
     private Main main;
-
-    @JsonProperty("wind")
     private Wind wind;
-
-    @JsonProperty("dt")
-    private long dateTime;
-
-    @JsonProperty("sys")
+    private long dt;
     private Sys sys;
-
-    @JsonProperty("name")
-    private String cityName;
-    @JsonProperty("visibility")
+    private String name;
+    private Long cod;
     private double visibility;
-    @JsonProperty("clouds")
     private Clouds clouds;
-    @JsonProperty("timezone")
     private Long timezone;
+    private String base;
+    private Long id;
+
+    public Long getCod() {
+        return cod;
+    }
+
+    public void setCod(Long cod) {
+        this.cod = cod;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getBase() {
+        return base;
+    }
+
+    public void setBase(String base) {
+        this.base = base;
+    }
 
     public Long getTimezone() {
         return timezone;
@@ -48,12 +58,12 @@ public class WeatherJson {
         this.clouds = clouds;
     }
 
-    public Coordinates getCoordinates() {
-        return coordinates;
+    public Coordinates getCoord() {
+        return coord;
     }
 
-    public void setCoordinates(Coordinates coordinates) {
-        this.coordinates = coordinates;
+    public void setCoord(Coordinates coord) {
+        this.coord = coord;
     }
 
     public Weather[] getWeather() {
@@ -80,12 +90,12 @@ public class WeatherJson {
         this.wind = wind;
     }
 
-    public long getDateTime() {
-        return dateTime;
+    public long getDt() {
+        return dt;
     }
 
-    public void setDateTime(long dateTime) {
-        this.dateTime = dateTime;
+    public void setDt(long dt) {
+        this.dt = dt;
     }
 
     public Sys getSys() {
@@ -96,12 +106,12 @@ public class WeatherJson {
         this.sys = sys;
     }
 
-    public String getCityName() {
-        return cityName;
+    public String getName() {
+        return name;
     }
 
-    public void setCityName(String cityName) {
-        this.cityName = cityName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public double getVisibility() {

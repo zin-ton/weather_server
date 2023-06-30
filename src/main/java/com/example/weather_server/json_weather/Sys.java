@@ -5,19 +5,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Sys {
-    @JsonProperty("type")
     private int type;
-
-    @JsonProperty("id")
     private int id;
-
-    @JsonProperty("country")
     private String country;
-
-    @JsonProperty("sunrise")
     private long sunrise;
-
-    @JsonProperty("sunset")
     private long sunset;
 
     public int getType() {

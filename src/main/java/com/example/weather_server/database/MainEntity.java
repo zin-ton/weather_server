@@ -22,10 +22,10 @@ public class MainEntity {
     private double humidity;
 
     public MainEntity(WeatherJson weatherJson) {
-        this.temp = weatherJson.getMain().getTemperature();
-        this.feels_like = weatherJson.getMain().getFeelsLike();
-        this.temp_min = weatherJson.getMain().getMinTemperature();
-        this.temp_max = weatherJson.getMain().getMaxTemperature();
+        this.temp = weatherJson.getMain().getTemp();
+        this.feels_like = weatherJson.getMain().getFeels_like();
+        this.temp_min = weatherJson.getMain().getTemp_min();
+        this.temp_max = weatherJson.getMain().getTemp_max();
         this.pressure = weatherJson.getMain().getPressure();
         this.humidity = weatherJson.getMain().getHumidity();
     }

@@ -1,16 +1,11 @@
 package com.example.weather_server.json_weather;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Wind {
-    @JsonProperty("speed")
     private double speed;
-
-    @JsonProperty("deg")
-    private int direction;
-
+    private int deg;
     public double getSpeed() {
         return speed;
     }
@@ -19,12 +14,12 @@ public class Wind {
         this.speed = speed;
     }
 
-    public int getDirection() {
-        return direction;
+    public int getDeg() {
+        return deg;
     }
 
-    public void setDirection(int direction) {
-        this.direction = direction;
+    public void setDeg(int deg) {
+        this.deg = deg;
     }
 // getters and setters
 }

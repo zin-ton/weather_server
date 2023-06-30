@@ -18,8 +18,8 @@ public class CoordEntity {
     private DatabaseEntity database;
 
     public CoordEntity(WeatherJson weatherJson) {
-        this.lon = weatherJson.getCoordinates().getLongitude();
-        this.lat = weatherJson.getCoordinates().getLatitude();
+        this.lon = weatherJson.getCoord().getLongitude();
+        this.lat = weatherJson.getCoord().getLatitude();
     }
 
     public CoordEntity() {

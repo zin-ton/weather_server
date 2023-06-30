@@ -36,7 +36,7 @@ public class RequestsController {
     @GetMapping("/updateWeather/{id}/{lon}/{lat}")
     @ResponseBody
     public WeatherJson updateWeaher(@PathVariable("id") Long id, @PathVariable("lon") Double lon, @PathVariable("lat") Double lat) {
-        String url = "https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&appid=" + "20c29eec2e1c9d4891b32fac6a783bde" + "&units=metric";
+        String url = "https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&appid=" + "API" + "&units=metric";
         WeatherJson weatherJson = new WeatherJson();
         String answer = null;
         try {
